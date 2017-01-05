@@ -18,7 +18,12 @@ const HEROES: Hero[] = [
 export class HeroService {
   getHeroes(): Promise<Hero[]> {
     return new Promise(resolve => {
-      setTimeout(() => resolve(HEROES), 1000)
+      setTimeout(() => resolve(HEROES), 200)
     })
+  }
+
+  getHero(id: number): Promise<Hero> {
+    return this.getHeroes()
+              .then(heroes => heroes.find(hero => hero.id === id));
   }
 }
